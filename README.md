@@ -5,8 +5,8 @@ With a single console command, add a watermark to batches of (supported formats)
 
 ## Prerequisites
 ### You need to have installed and available in your path:
-1. FFmpeg
-2. NodeJs
+1. FFmpeg ( `ffmpeg` )
+2. NodeJs ( `node` )
 
 ## Installation
 1. clone this project
@@ -18,11 +18,11 @@ With a single console command, add a watermark to batches of (supported formats)
 
 1. media_files_directory_path - mandatory
 2. watermark_file_path - mandatory
-3. prefix - mandatory - outputFilename = {prefix}{inputFilename}
+3. prefix - mandatory: outputFilename = {prefix}{inputFilename}
 4. output_directory_path - optional - directory where the output watermarked files will be placed
 
 ## Configuration
-In the [config.js]() file you can set:
+In the [config.js](https://github.com/oliveox/watermarker/blob/main/config.js) file you can set:
 
 
 - Position of the watermark in the media file. Margins are express in pixels.
@@ -49,10 +49,8 @@ Untested formats are not necessarily unsupported.
 - Video: MP4
 - Image: JPEG
 
-# Help
-Drop an issue if you have any questions.
+# Help / Contribution
+Drop an issue if you have any questions, suggestions or observations. Other not yet implemented cool features I've been thinking about can be found in the [TODO]() file or in code market with `//TODO`.
 
-# Contribution
-Drop an issue if you have any suggestions / observations. Other not yet implemented cool features I've been thinking about can be found in the [TODO]() file or in code market with `//TODO`.
-
-
+# Credits
+Shout-out to the [node-ffmpeg](https://github.com/damianociarla/node-ffmpeg) project from which I've used the code for getting the overlay in FFmpeg language.
