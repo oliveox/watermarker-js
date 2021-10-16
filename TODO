@@ -1,0 +1,11 @@
+TODO:
+- pause / resume watermarking process
+- loading console animation
+- adapt watermark margin to media width, height
+- add timing
+- add logging
+- get ffmpeg inside the project (not external dependency)
+- create an object for each relevant file
+
+Done:
+- adapt watermark margin to media file width, height
