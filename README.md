@@ -14,7 +14,7 @@ With a single console command, add a watermark to batches of (supported formats)
 
 ## Watermarking command
 ### In the root of the project, run:
-`node main.js {media_files_directory_path} {watermark_file_path} ${prefix} {output_directory_path}`
+`node main.js {media_files_directory_path} {watermark_file_path} {prefix} {output_directory_path}`
 
 1. media_files_directory_path - mandatory
 2. watermark_file_path - mandatory
@@ -50,7 +50,7 @@ Untested formats are not necessarily unsupported.
 - Image: JPEG
 
 # Help / Contribution
-Drop an issue if you have any questions, suggestions or observations. Other not yet implemented cool features I've been thinking about can be found in the [TODO]() file or in code market with `//TODO`.
+Drop an issue if you have any questions, suggestions or observations. Other not yet implemented cool features I've been thinking about can be found in the [TODO]() file or in code marked with `//TODO`.
 
 # Credits
 Shout-out to the [node-ffmpeg](https://github.com/damianociarla/node-ffmpeg) project from which I've used the code for getting the overlay in FFmpeg language.

@@ -1,4 +1,6 @@
 TODO:
+- create output folder if specified and doesn't exist
+- turn to typescript
 - pause / resume watermarking process
 - loading console animation
 - adapt watermark margin to media width, height
