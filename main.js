@@ -20,7 +20,7 @@ const main = async () => {
         if (!prefix || prefix.length === 0) 
             throw "Third argument (output file prefix) empty";
 
-        if (outputDirPath && !fs.existsSync(dirPath)) 
+        if (outputDirPath && !fs.existsSync(outputDirPath)) 
             throw "Fourth argument (output directory path) is not a valid path";
 
         // get watermark ratio
