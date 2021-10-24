@@ -12,14 +12,25 @@ With a single console command, add a watermark to batches of (supported formats)
 1. clone this project
 2. run `npm install` in the root of the project
 
-## Watermarking command
-### In the root of the project, run:
-`node main.js {media_files_directory_path} {watermark_file_path} {prefix} {output_directory_path}`
+## Watermarker CLI arguments
+```
+$ node main.js -h
+usage: main.js [-h] [-v] [-d DIRECTORY] [-w WATERMARK] [-p PREFIX] [-od OUTPUT_DIRECTORY]
 
-1. media_files_directory_path - mandatory
-2. watermark_file_path - mandatory
-3. prefix - mandatory: outputFilename = {prefix}{inputFilename}
-4. output_directory_path - optional - directory where the output watermarked files will be placed
+Add a watermark to a batch of images and videos.
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -v, --version         show program's version number and exit
+  -d DIRECTORY, --directory DIRECTORY
+                        Media files directory path | [Required]
+  -w WATERMARK, --watermark WATERMARK
+                        Watermark file path | [Required]
+  -p PREFIX, --prefix PREFIX
+                        Prefix of the new file. OutputFilename = {prefix}{InputFilename} | [Required]
+  -od OUTPUT_DIRECTORY, --output_directory OUTPUT_DIRECTORY
+                        Drectory where the output watermarked files will be placed | [Optional]
+```
 
 ## Configuration
 In the [config.js](https://github.com/oliveox/watermarker/blob/main/config.js) file you can set:
