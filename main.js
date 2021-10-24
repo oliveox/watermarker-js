@@ -1,11 +1,11 @@
-const fs = require('fs');
+const fs = require('fs').promises;
 const sharp = require('sharp');
 
 const {getAllRelevantFiles, getFileOrientation, addWatermark} = require('./utils');
 
-const main = async (args) => {
-
+const main = async () => {
     try {
+        const args = parse_args();
         if (!args) throw 'Arguments could not be parsed'
 
         const dirPath = args.directory;
@@ -13,17 +13,22 @@ const main = async (args) => {
         const prefix = args.prefix;
         const outputDirPath = args.output_directory;
 
-        if (!fs.existsSync(dirPath)) 
-            throw "First argument (input directory path) not valid";
+        if (!pathExists(dirPath)) 
+            throw "Input media files directory path doesn't exist";
 
-        if (!fs.existsSync(watermarkPath)) 
-            throw "Second argument (watermark path) not valid";
+        if (!pathExists(watermarkPath)) 
+            throw "Watermark file path doesn't exist";
 
         if (!prefix || prefix.length === 0) 
-            throw "Third argument (output file prefix) empty";
+            throw "Prefix not specified";
 
-        if (outputDirPath && !fs.existsSync(outputDirPath)) 
-            throw "Fourth argument (output directory path) is not a valid path";
+        if (outputDirPath && !(await pathExists(outputDirPath))) {
+            try {
+                await fs.mkdir(outputDirPath, {recursive: true})
+            } catch (err) {
+                throw `Error while trying to created output directory path: ${err}`
+            }
+        }
 
         // get watermark ratio
         const image = sharp(watermarkPath);
@@ -68,15 +73,16 @@ const parse_args = () => {
     });
  
     parser.add_argument('-v', '--version', { action: 'version', version });
-    parser.add_argument('-d', '--directory', { help: 'Media files directory path | [Required]' });
+    parser.add_argument('-d', '--directory', { help: 'Input media files directory path | [Required]' });
     parser.add_argument('-w', '--watermark', { help: 'Watermark file path | [Required]' });
     parser.add_argument('-p', '--prefix', { help: 'Prefix of the new file. OutputFilename = {prefix}{InputFilename} | [Required]' });
-    parser.add_argument('-od', '--output_directory', { help: 'Drectory where the output watermarked files will be placed | [Optional]' });
+    parser.add_argument('-od', '--output_directory', { help: "Output watermarked files drectory. If path doesn't exist, it will be created | [Optional]" });
     
     return parser.parse_args();
 }
 
+const pathExists = async path => !!(await fs.stat(path).catch(e => false));
+
 (async () => {
-    const args = parse_args();
-    await main(args);
+    await main();
 })();
