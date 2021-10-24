@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "argparse": "^2.0.1",
     "ffprobe": "^1.1.2",
     "ffprobe-static": "^3.0.0",
     "file-type": "^16.5.3",
