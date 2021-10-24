@@ -23,13 +23,13 @@ optional arguments:
   -h, --help            show this help message and exit
   -v, --version         show program's version number and exit
   -d DIRECTORY, --directory DIRECTORY
-                        Media files directory path | [Required]
+                        Input media files directory path | [Required]
   -w WATERMARK, --watermark WATERMARK
                         Watermark file path | [Required]
   -p PREFIX, --prefix PREFIX
                         Prefix of the new file. OutputFilename = {prefix}{InputFilename} | [Required]
   -od OUTPUT_DIRECTORY, --output_directory OUTPUT_DIRECTORY
-                        Drectory where the output watermarked files will be placed | [Optional]
+                        Output watermarked files drectory. If path doesn't exist, it will be created | [Optional]
 ```
 
 ## Configuration
