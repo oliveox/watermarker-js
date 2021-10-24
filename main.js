@@ -3,13 +3,15 @@ const sharp = require('sharp');
 
 const {getAllRelevantFiles, getFileOrientation, addWatermark} = require('./utils');
 
-const main = async () => {
+const main = async (args) => {
 
     try {
-        const dirPath = process.argv[2];
-        const watermarkPath = process.argv[3];
-        const prefix = process.argv[4];
-        const outputDirPath = process.argv[5];
+        if (!args) throw 'Arguments could not be parsed'
+
+        const dirPath = args.directory;
+        const watermarkPath = args.watermark;
+        const prefix = args.prefix;
+        const outputDirPath = args.output_directory;
 
         if (!fs.existsSync(dirPath)) 
             throw "First argument (input directory path) not valid";
@@ -57,6 +59,24 @@ const main = async () => {
     }
 }
 
+const parse_args = () => {
+    const { ArgumentParser } = require('argparse');
+    const { version } = require('./package.json');
+    
+    const parser = new ArgumentParser({
+        description: 'Add a watermark to a batch of images and videos.'
+    });
+ 
+    parser.add_argument('-v', '--version', { action: 'version', version });
+    parser.add_argument('-d', '--directory', { help: 'Media files directory path | [Required]' });
+    parser.add_argument('-w', '--watermark', { help: 'Watermark file path | [Required]' });
+    parser.add_argument('-p', '--prefix', { help: 'Prefix of the new file. OutputFilename = {prefix}{InputFilename} | [Required]' });
+    parser.add_argument('-od', '--output_directory', { help: 'Drectory where the output watermarked files will be placed | [Optional]' });
+    
+    return parser.parse_args();
+}
+
 (async () => {
-    await main();
+    const args = parse_args();
+    await main(args);
 })();
