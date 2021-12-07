@@ -1,9 +1,7 @@
 const fs = require('fs').promises
-const sharp = require('sharp')
-
 const { getImageRatio, getAllRelevantFiles, getFileOrientation, addWatermark } = require('./utils')
 
-const main = async () => {
+async function main () {
 	try {
 		const args = parseArgs()
 		if (!args) throw 'Arguments could not be parsed'
@@ -59,7 +57,7 @@ const main = async () => {
 	}
 }
 
-const parseArgs = () => {
+function parseArgs () {
 	const { ArgumentParser } = require('argparse')
 	const { version } = require('./package.json')
 
@@ -71,16 +69,16 @@ const parseArgs = () => {
 	parser.add_argument('-i', '--input_directory', { help: 'Input media files directory path | [Required]' })
 	parser.add_argument('-w', '--watermark', { help: 'Watermark file path | [Required]' })
 	parser.add_argument('-p', '--prefix', {
-		help: 'Prefix of the new file. OutputFilename = {prefix}{InputFilename} | [Required]' 
+		help: 'Prefix of the new file. OutputFilename = {prefix}{InputFilename} | [Required]'
 	})
 	parser.add_argument('-o', '--output_directory', {
-		help: "Output watermarked files drectory. If path doesn't exist, it will be created | [Optional]" 
+		help: "Output watermarked files drectory. If path doesn't exist, it will be created | [Optional]"
 	})
 
 	return parser.parse_args()
 }
 
-const pathExists = async path => !!(await fs.stat(path).catch(e => false));
+async function pathExists (path) { return (!!(await fs.stat(path).catch(e => false))) };
 
 (async () => {
 	await main()
