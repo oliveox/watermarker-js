@@ -8,7 +8,7 @@ const main = async () => {
 		const args = parseArgs()
 		if (!args) throw 'Arguments could not be parsed'
 
-		const dirPath = args.directory
+		const dirPath = args.input_directory
 		const watermarkPath = args.watermark
 		const prefix = args.prefix
 		const outputDirPath = args.output_directory
@@ -68,12 +68,12 @@ const parseArgs = () => {
 	})
 
 	parser.add_argument('-v', '--version', { action: 'version', version })
-	parser.add_argument('-d', '--directory', { help: 'Input media files directory path | [Required]' })
+	parser.add_argument('-i', '--input_directory', { help: 'Input media files directory path | [Required]' })
 	parser.add_argument('-w', '--watermark', { help: 'Watermark file path | [Required]' })
 	parser.add_argument('-p', '--prefix', {
 		help: 'Prefix of the new file. OutputFilename = {prefix}{InputFilename} | [Required]' 
 	})
-	parser.add_argument('-od', '--output_directory', {
+	parser.add_argument('-o', '--output_directory', {
 		help: "Output watermarked files drectory. If path doesn't exist, it will be created | [Optional]" 
 	})
 

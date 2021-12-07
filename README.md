@@ -14,21 +14,21 @@ With a single console command, add a watermark to batches of (supported formats)
 
 ## Watermarker CLI arguments
 ```
-$ node main.js -h
-usage: main.js [-h] [-v] [-d DIRECTORY] [-w WATERMARK] [-p PREFIX] [-od OUTPUT_DIRECTORY]
+$ node main.js --help
+usage: main.js [-h] [-v] [-i INPUT_DIRECTORY] [-w WATERMARK] [-p PREFIX] [-o OUTPUT_DIRECTORY]
 
 Add a watermark to a batch of images and videos.
 
 optional arguments:
   -h, --help            show this help message and exit
   -v, --version         show program's version number and exit
-  -d DIRECTORY, --directory DIRECTORY
+  -i INPUT_DIRECTORY, --input_directory INPUT_DIRECTORY
                         Input media files directory path | [Required]
   -w WATERMARK, --watermark WATERMARK
                         Watermark file path | [Required]
   -p PREFIX, --prefix PREFIX
                         Prefix of the new file. OutputFilename = {prefix}{InputFilename} | [Required]
-  -od OUTPUT_DIRECTORY, --output_directory OUTPUT_DIRECTORY
+  -o OUTPUT_DIRECTORY, --output_directory OUTPUT_DIRECTORY
                         Output watermarked files drectory. If path doesn't exist, it will be created | [Optional]
 ```
 
